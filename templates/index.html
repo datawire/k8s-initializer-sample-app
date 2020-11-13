@@ -1,0 +1,65 @@
+{{template "header.html" .}}
+<main>
+    <div class="main-header">
+        <h2>This sample application is publicly accessible to let you explore your Kubernetes sandbox</h2>
+        <h3>Share it with your friends and colleagues, and show them what you've built!</h3>
+    </div>
+    <ul>
+        <li>
+            <h2>Ambassador Edge Stack</h2>
+            <h3>Navigate to the Edge Policy Console: <a href="/edge_stack/admin/">{{.Basepath}}/edge_stack/admin/</a></h3>
+            <h3>Visit the DevPortal: <a href="/docs/">{{.Basepath}}/docs/</a></h3>
+            {{/*<h3>View the OpenAPI documentation: <a href="/openapi/">{{.Basepath}}/openapi/</a></h3>*/}}
+            Learn about Ambassador Edge Stack: <a href="https://www.getambassador.io/docs/latest/tutorials/quickstart-demo/">Ambassador Tutorial</a>
+        </li>
+    </ul>
+    {{if .PrometheusPath}}
+    <ul>
+        <li>
+            <h2>Prometheus</h2>
+            <h3>The Prometheus web UI is available at: <a href="{{.PrometheusPath}}">{{.Basepath}}{{.PrometheusPath}}</a></h3>
+        </li>
+    </ul>
+    {{end}}
+    {{if .JaegerPath}}
+    <ul>
+        <li>
+            <h2>Jaeger</h2>
+            <h3>The Jaeger UI is available at: <a href="{{.JaegerPath}}">{{.Basepath}}{{.JaegerPath}}</a></h3>
+        </li>
+    </ul>
+    {{end}}
+    {{if .OpenTelemetryCollectorSvc}}
+    <ul>
+        <li>
+            <h2>OpenTelemetry</h2>
+            Configure your custom application for B3 Header Propagation and send trace data to one of the OpenTelemetry service endpoint:
+            <ul>
+                <li class="compact"><code>{{.OpenTelemetryCollectorSvc}}:9411</code> for Zipkin</li>
+                <li class="compact"><code>{{.OpenTelemetryCollectorSvc}}:55680</code> for OpenTelemetry Protocol (OTLP)</li>
+                <li class="compact"><code>{{.OpenTelemetryCollectorSvc}}:14250</code> for Jaeger-grpc</li>
+                <li class="compact"><code>{{.OpenTelemetryCollectorSvc}}:14268</code> for Jaeger-thrift</li>
+            </ul>
+        </li>
+    </ul>
+    {{end}}
+    {{if .KeycloakPath}}
+    <ul>
+        <li>
+            <h2>Keycloak</h2>
+            <h3>The Keycloak UI is available at: <a href="{{.KeycloakPath}}">{{.Basepath}}{{.KeycloakPath}}</a></h3>
+            <a href="https://app.getambassador.io/initializer/keycloak-filter-editor">Click here to configure Keycloak, <code>Filter</code> and <code>FilterPolicy</code> resources</a>, or visit the <a href="https://www.getambassador.io/docs/latest/howtos/sso/keycloak/#keycloak">Keycloak integration guide for Ambassador</a> for further instructions.
+        </li>
+    </ul>
+    {{end}}
+    {{if .ArgoCDPath}}
+    <ul>
+        <li>
+            <h2>Argo CD</h2>
+            <h3>The Argo UI is available at: <a href="{{.ArgoCDPath}}">{{.Basepath}}{{.ArgoCDPath}}</a></h3>
+            Visit the <a href="https://argoproj.github.io/argo-cd/getting_started/#6-create-an-application-from-a-git-repository">Argo CD Getting Started guide</a> for instructions on how to create an applications from a Git repository.
+        </li>
+    </ul>
+    {{end}}
+</main>
+{{template "footer.html"}}
