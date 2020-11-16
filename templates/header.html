@@ -8,6 +8,10 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-2QFX8SN83P');
+        gtag('event', 'hostname', {
+            'event_category': 'Sample App',
+            'event_label': '{{.Basepath}}'
+        });
     </script>
     <meta charset="UTF-8">
     <title>Sample Application by Ambassador Labs</title>
@@ -16,6 +20,6 @@
 </head>
 <body>
 <header>
-    <h1>Explore your Kubernetes sandbox</h1>
-    <h4>Powered by the <a href="https://app.getambassador.io/initializer">K8s Initializer</a></h4>
+    <h1>Explore Your Kubernetes Sandbox</h1>
+    <h4>Powered by the <a href="https://app.getambassador.io/initializer/">K8s Initializer</a></h4>
 </header>
