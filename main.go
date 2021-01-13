@@ -35,6 +35,7 @@ const (
 	OTEL_COLLECTOR_ENDPOINT = "OTEL_COLLECTOR_ENDPOINT"
 	KEYCLOAK_PATH           = "KEYCLOAK_PATH"
 	ARGOCD_PATH             = "ARGOCD_PATH"
+	CONSULCONNECT_PATH      = "CONSULCONNECT_PATH"
 )
 
 var (
@@ -106,6 +107,7 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 		OpenTelemetryCollectorSvc string
 		KeycloakPath              string
 		ArgoCDPath                string
+		ConsulConnectPath         string
 	}{
 		Basepath:                  fmt.Sprintf("%v://%v", scheme, hostname),
 		PrometheusPath:            os.Getenv(PROMETHEUS_PATH),
@@ -113,6 +115,7 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 		OpenTelemetryCollectorSvc: os.Getenv(OTEL_COLLECTOR_ENDPOINT),
 		KeycloakPath:              os.Getenv(KEYCLOAK_PATH),
 		ArgoCDPath:                os.Getenv(ARGOCD_PATH),
+		ConsulConnectPath:         os.Getenv(CONSULCONNECT_PATH),
 	}
 
 	// Render the template given the variables

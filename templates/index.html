@@ -61,5 +61,29 @@
         </li>
     </ul>
     {{end}}
+    {{if .ConsulConnectPath}}
+    <ul>
+        <li>
+            <h2>Consul Connect</h2>
+            <h3>The Consul UI is available at: <a href="{{.ConsulConnectPath}}">{{.Basepath}}{{.ConsulConnectPath}}</a></h3>
+            Deploy any application with automatic Consul Connect sidecar proxy injection by setting the <code>"consul.hashicorp.com/connect-inject"</code> annotation to <code>true</code> on the <code>Pod</code> definition.<br/><br/>
+            Create Ambassador <code>Mapping</code> resources to route public traffic to Consul Connect services with mTLS using the <code>resolver</code>, <code>tls</code> and <code>load_balancer</code> properties from this example:<br/>
+            <pre>
+---
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: my-backend-service-mapping-tls
+spec:
+  prefix: /my-backend-service-tls/
+  service: my-backend-service-sidecar-proxy
+  resolver: consul-dc1
+  tls: ambassador-consul
+  load_balancer:
+    policy: round_robin</pre>
+            Visit the <a href="https://www.consul.io/docs/connect">Consul Connect Service Mesh Overview</a> page for other examples and read about the benefits of service meshes.
+        </li>
+    </ul>
+    {{end}}
 </main>
 {{template "footer.html"}}
